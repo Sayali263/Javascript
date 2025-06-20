@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stone Papper Scissors</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Glow animations for messages */
+    .glow-green {
+      animation: glowGreen 1.5s ease-in-out infinite alternate;
+    }
+    .glow-red {
+      animation: glowRed 1.5s ease-in-out infinite alternate;
+    }
+    .glow-yellow {
+      animation: glowYellow 1.5s ease-in-out infinite alternate;
+    }
+
+    @keyframes glowGreen {
+      0% { text-shadow: 0 0 10px #22c55e; }
+      100% { text-shadow: 0 0 20px #16a34a; }
+    }
+    @keyframes glowRed {
+      0% { text-shadow: 0 0 10px #ef4444; }
+      100% { text-shadow: 0 0 20px #b91c1c; }
+    }
+    @keyframes glowYellow {
+      0% { text-shadow: 0 0 10px #facc15; }
+      100% { text-shadow: 0 0 20px #a16207; }
+    }
+
+    /* Bounce scale on hover */
+    .choices:hover {
+      animation: bounceScale 0.4s ease forwards;
+    }
+    @keyframes bounceScale {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1.1); }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 via-white to-pink-50 dark:bg-gradient-to-br dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 font-sans text-center p-6 transition-colors duration-300" id="body">
+
+  <h1 class="text-4xl font-extrabold text-pink-600 dark:text-pink-400 mb-12 drop-shadow-lg">✊ Stone Papper Scissors ✋</h1>
+
+  <div class="flex justify-center gap-10 mb-12">
+    <div class="choices cursor-pointer rounded-full border-8 border-pink-500 p-3 bg-pink-100 hover:bg-pink-200 transition" id="rock">
+      <img src="images/rock2.png" alt="Rock" class="w-28 h-28" />
+    </div>
+    <div class="choices cursor-pointer rounded-full border-8 border-yellow-400 p-3 bg-yellow-100 hover:bg-yellow-200 transition" id="papper">
+      <img src="images/paper.png" alt="Paper" class="w-28 h-28" />
+    </div>
+    <div class="choices cursor-pointer rounded-full border-8 border-blue-500 p-3 bg-blue-100 hover:bg-blue-200 transition" id="scissor">
+      <img src="images/scissors.png" alt="Scissors" class="w-28 h-28" />
+    </div>
+  </div>
+
+  <div class="score-board bg-white dark:bg-gray-700 px-8 py-6 rounded-xl shadow-xl inline-block mb-8 text-gray-800 dark:text-white">
+    <h2 class="text-2xl font-semibold mb-3">Score Board</h2>
+    <p id="user-score" class="text-pink-600 dark:text-pink-400 font-bold text-xl mb-1">User Score: 0</p>
+    <p id="computer-score" class="text-blue-600 dark:text-blue-400 font-bold text-xl">Computer Score: 0</p>
+  </div>
+
+  <div class="msg-container mt-6">
+    <p id="msg" class="text-blue-600 dark:text-blue-400 font-extrabold text-2xl animate-pulse select-none">🎮 Play Your Move!</p>
+  </div>
+<div class="mt-6 flex justify-center gap-4">
+  <button id="reset-btn" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
+    🔄 Reset
+  </button>
+  <!-- <button id="toggle-dark" class="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-700 transition">
+    🌙 Toggle Dark Mode
+  </button> -->
+</div>
+
+  <!-- Sounds -->
+  <audio id="click-sound" src="sounds/click.mp3" preload="auto"></audio>
+  <audio id="win-sound" src="sounds/success.mp3" preload="auto"></audio>
+  <audio id="lose-sound" src="sounds/lose.mp3" preload="auto"></audio>
+ <audio id="draw-sound" src="sounds/draw.mp3" preload="auto"></audio>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
